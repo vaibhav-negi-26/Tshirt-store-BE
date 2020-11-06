@@ -4,33 +4,33 @@ const {
     v4: uuidv4
 } = require('uuid')
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        require: true,
+        required: true,
         trim: true,
         maxlength: 32
     },
-    lastname: {
+    last_name: {
         type: String,
         trim: true,
         maxlength: 32
     },
     email: {
         type: String,
-        require: true,
+        required: true,
         trim: true,
         unique: true
     },
-    userinfo: {
+    user_info: {
         type: String,
         trim: true
     },
     encry_password: {
         type: String,
-        require: true
+        required: true
     },
-    slat: String,
+    salt: String,
     role: {
         type: Number,
         default: 0
@@ -50,7 +50,7 @@ const userSchema = mongoose.Schema({
 userSchema.virtual('password')
     .set(function (password) {
         this._password = password
-        this.slat = uuidv4()
+        this.salt = uuidv4()
         this.encry_password = this.securePassword(password)
     })
     .get(function () {
@@ -59,7 +59,7 @@ userSchema.virtual('password')
 
 // method on schema for hashing password
 
-userSchema.method = {
+userSchema.methods = {
     authentication: function (plainpassword) {
         return this.securePassword(plainpassword) === this.encry_password
     },
@@ -68,7 +68,7 @@ userSchema.method = {
             return ""
         }
         try {
-            return crypto.createHmac('sha256', this.slat)
+            return crypto.createHmac('sha256', this.salt)
                 .update(plainpassword)
                 .digest('hex');
         } catch (err) {
@@ -77,4 +77,4 @@ userSchema.method = {
     }
 }
 
-module.export = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema)

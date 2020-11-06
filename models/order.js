@@ -34,7 +34,7 @@ const orderScheman = new mongoose.Schema({
 // 'Order' this var below is just used for exporting
 const Order = mongoose.model('Order', orderScheman)
 
-module.export = {
+module.exports = {
     Order,
     ProductCart
 }
