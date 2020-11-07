@@ -130,7 +130,7 @@ exports.isAuthenticated = (req,res,next) => {
 exports.isAdmin = (req,res,next) => {
     if(req.profile.role === 0){
         return res.status(403).send({
-            error : 'Access denied'
+            error : 'Access denied (Admin Route)'
         })
     }
     next()
