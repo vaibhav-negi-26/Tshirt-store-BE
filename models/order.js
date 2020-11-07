@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const {
     ObjectId
-} = mongoose.Schema
+} = mongoose.Schema.Types
 
 // product cart schema
 const productCartSchema = new mongoose.Schema({

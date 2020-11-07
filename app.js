@@ -2,7 +2,10 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+
+// My routes
 const authRouter = require('./routes/auth')
+const userRouter = require('./routes/user')
 
 //Port and Express app 
 const app = express()
@@ -27,6 +30,7 @@ app.use(cors())
 
 // My Routes
 app.use('/api',authRouter)
+app.use('/api',userRouter)
 
 // Starting a server
 app.listen(PORT, () => {

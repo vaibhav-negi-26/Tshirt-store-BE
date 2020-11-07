@@ -115,7 +115,7 @@ exports.isSignedIn = expressJwt({
 // custom middle ware (isAuthenticated)
 exports.isAuthenticated = (req,res,next) => {
      
-    //              FE sets this |  middleware sets this |
+    //              params sets this |  middleware sets this |
     const checker = req.profile && req.auth && req.profile._id == req.auth._id
 
     if(!checker){

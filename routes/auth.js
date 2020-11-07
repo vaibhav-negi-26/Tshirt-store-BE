@@ -39,11 +39,4 @@ router.post("/signin", signin_check, signin)
 // signout route
 router.get("/signout", signout)
 
-router.get("/test", isSignedIn, (req,res) => {
-    console.log(req.auth);
-    res.send({
-        msg : 'Hi there test'
-    })
-})
-
 module.exports = router
