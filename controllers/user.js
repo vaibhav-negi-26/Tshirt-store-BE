@@ -53,6 +53,7 @@ exports.updateUser = (req, res) => {
     )
 }
 
+// Gets all orders of a user
 exports.userPurchaseList = (req,res) => {
     
     Order.find({user : req.profile._id})

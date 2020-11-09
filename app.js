@@ -8,6 +8,7 @@ const authRouter = require('./routes/auth')
 const userRouter = require('./routes/user')
 const categoryRouter = require('./routes/category')
 const productRouter = require('./routes/product')
+const orderRouter = require('./routes/order')
 
 //Port and Express app 
 const app = express()
@@ -35,6 +36,7 @@ app.use('/api',authRouter)
 app.use('/api',userRouter)
 app.use('/api',categoryRouter)
 app.use('/api',productRouter)
+app.use('/api',orderRouter)
 
 // Starting a server
 app.listen(PORT, () => {

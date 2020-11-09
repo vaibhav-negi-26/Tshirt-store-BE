@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+    const mongoose = require('mongoose')
 const {
     ObjectId
 } = mongoose.Schema.Types
@@ -19,9 +19,15 @@ const ProductCart = mongoose.model('ProductCart', productCartSchema)
 
 // order schema
 const orderScheman = new mongoose.Schema({
-    product: [productCartSchema],
+    products: [productCartSchema],
     transaction_id: {},
-    amount: String,
+    amount: Number,
+    address: String,
+    status : {
+        type : String,
+        default : "Recieved",
+        enum: ["Cancelled" , "Delivered","Shipped","Processing","Recieved"]
+    },
     updated: Date,
     user: {
         type: ObjectId,
